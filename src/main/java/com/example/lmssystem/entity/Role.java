@@ -1,5 +1,6 @@
 package com.example.lmssystem.entity;
 
+import com.example.lmssystem.enums.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.UUID;
 
 @Component
-public class Utils {
+public class  Utils {
     private static final Random RANDOM = new Random();
     private static I18nService i18n;
     Utils(I18nService i18nService) {
