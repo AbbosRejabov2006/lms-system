@@ -20,7 +20,7 @@ public class ExpensesController {
 
     @PostMapping
     public ResponseEntity<?> createExpenses(@RequestBody ExpencesDTO expencesDTO) {
-        Expences newExpences = expencesService.saveExpences(expencesDTO);
+        ExpencesDTO newExpences = expencesService.saveExpences(expencesDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ResponseData.builder()
                         .message("Expense created successfully")
@@ -31,7 +31,7 @@ public class ExpensesController {
 
     @GetMapping
     public ResponseEntity<?> getAllExpences() {
-        List<Expences> expencesList = expencesService.getAllExpences();
+        List<ExpencesDTO> expencesList = expencesService.getAllExpences();
         return ResponseEntity.ok(ResponseData.builder()
                 .message("Expenses retrieved successfully")
                 .data(expencesList)
@@ -41,7 +41,7 @@ public class ExpensesController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getExpensesById(@PathVariable Long id) {
-        Expences expences = expencesService.getExpencesById(id);
+        ExpencesDTO expences = expencesService.getExpencesById(id);
         return ResponseEntity.ok(ResponseData.builder()
                 .message("Expense found with id: " + id)
                 .data(expences)
@@ -49,22 +49,22 @@ public class ExpensesController {
                 .build());
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> updateExpenses(@PathVariable Long id, @RequestBody  ExpensesDTO expensesDTO) {
-//        Expenses updatedExpenses = expensesService.updateExpenses(id, expensesDTO);
-//        return ResponseEntity.ok(ResponseData.builder()
-//                .message("Expense updated successfully")
-//                .data(updatedExpenses)
-//                .success(true)
-//                .build());
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateExpenses(@PathVariable Long id, @RequestBody ExpencesDTO expensesDTO) {
+        ExpencesDTO updatedExpenses = expencesService.updateExpences(id, expensesDTO);
+        return ResponseEntity.ok(ResponseData.builder()
+                .message("Expense updated successfully")
+                .data(updatedExpenses)
+                .success(true)
+                .build());
+    }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<?> deleteExpenses(@PathVariable Long id) {
-//        expensesService.deleteExpenses(id);
-//        return ResponseEntity.ok(ResponseData.builder()
-//                .message("Expense deleted successfully")
-//                .success(true)
-//                .build());
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteExpenses(@PathVariable Long id) {
+        expencesService.deleteExpences(id);
+        return ResponseEntity.ok(ResponseData.builder()
+                .message("Expense deleted successfully")
+                .success(true)
+                .build());
+    }
 }

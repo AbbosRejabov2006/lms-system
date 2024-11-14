@@ -21,7 +21,7 @@ public class InvoiceController {
 
     @PostMapping
     public ResponseEntity<?> createInvoice(@RequestBody InvoiceDTO invoiceDTO) {
-        Invoice newInvoice = invoiceService.saveInvoice(invoiceDTO);
+        InvoiceDTO newInvoice = invoiceService.saveInvoice(invoiceDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ResponseData.builder()
                         .message("Invoice created successfully")
@@ -32,7 +32,7 @@ public class InvoiceController {
 
     @GetMapping
     public ResponseEntity<?> getAllInvoices() {
-        List<Invoice> invoices = invoiceService.getAllInvoices();
+        List<InvoiceDTO> invoices = invoiceService.getAllInvoices();
         return ResponseEntity.ok(ResponseData.builder()
                 .message("Invoices retrieved successfully")
                 .data(invoices)
@@ -42,7 +42,7 @@ public class InvoiceController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getInvoiceById(@PathVariable Long id) {
-        Invoice invoice = invoiceService.getInvoiceById(id);
+        InvoiceDTO invoice = invoiceService.getInvoiceById(id);
         return ResponseEntity.ok(ResponseData.builder()
                 .message("Invoice found with id: " + id)
                 .data(invoice)
@@ -52,7 +52,7 @@ public class InvoiceController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateInvoice(@PathVariable Long id, @RequestBody InvoiceDTO invoiceDTO) {
-        Invoice updatedInvoice = invoiceService.updateInvoice(id, invoiceDTO);
+        InvoiceDTO updatedInvoice = invoiceService.updateInvoice(id, invoiceDTO);
         return ResponseEntity.ok(ResponseData.builder()
                 .message("Invoice updated successfully")
                 .data(updatedInvoice)
