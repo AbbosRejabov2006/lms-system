@@ -42,4 +42,8 @@ public class GroupService {
         groupDTO.setName(group.getName());
         return groupDTO;
     }
+
+    public Group addStudentToNewGroup(Long courseId) {
+        return null;
+    }
 }

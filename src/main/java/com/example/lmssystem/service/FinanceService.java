@@ -1,7 +1,7 @@
 package com.example.lmssystem.service;
 
 import com.example.lmssystem.entity.Finance;
-import com.example.lmssystem.entity.FinanceType;
+import com.example.lmssystem.enums.FinanceType;
 import com.example.lmssystem.repository.FinanceRepository;
 import com.example.lmssystem.repository.UserRepository;
 import com.example.lmssystem.transfer.auth.FinanceDTO;
